@@ -15,15 +15,15 @@ App = React.createClass({
       loading: true
     });
 
-    this.getGif(searchingText).then(gif => {
-      this.setState({
-        loading: false,
-        gif: gif,
-        searchingText: searchingText
-      }).catch(err => console.log("Houston, we've had a problem" + err));
-					   // Nie wiem, która wersja byłaby ok (jeśli wogóle któraś z tych) ??? Czy trzeba się odwołać do errora z promise'a czy nie :/ HELP
-								//.catch(new Error => console.log("Houston, we've had a problem" + new Error)); 
-    });
+    this.getGif(searchingText)
+      .then(gif => {
+        this.setState({
+          loading: false,
+          gif: gif,
+          searchingText: searchingText
+        });
+      })
+      .catch(err => console.log("Houston, we've had a problem " + err));
   },
 
   getGif: function(searchingText) {
